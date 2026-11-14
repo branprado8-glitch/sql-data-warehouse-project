@@ -1,2 +1,2 @@
-Siguiente etapa del roadmap: Construir Capa Gold (vistas, esquema en estrella: dim_ y fact_).
-Aun no se desarrolla en esta practica (Clase 09 llega hasta Bronze).
+Siguiente etapa del roadmap: Construir Capa Gold.
+Se implementara con VISTAS (diapositiva 6): gold.dim_customers, gold.dim_products, gold.fact_sales.
