@@ -1,60 +1,49 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520" font-family="Segoe UI, Arial, sans-serif">
-  <rect width="1100" height="520" fill="#ffffff"/>
-  <text x="550" y="34" text-anchor="middle" font-size="22" font-weight="bold" fill="#1f2937">Flujo de datos · sql-data-warehouse-project (PostgreSQL)</text>
-
-  <!-- Column headers -->
-  <rect x="20"  y="56" width="250" height="44" rx="8" fill="#1e3a8a"/>
-  <text x="145" y="84" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Fuentes (CSV)</text>
-  <rect x="330" y="56" width="290" height="44" rx="8" fill="#c2410c"/>
-  <text x="475" y="84" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Capa Bronze · tablas</text>
-  <rect x="680" y="56" width="190" height="44" rx="8" fill="#6b7280"/>
-  <text x="775" y="84" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Capa Silver · tablas</text>
-  <rect x="900" y="56" width="180" height="44" rx="8" fill="#ca8a04"/>
-  <text x="990" y="84" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Capa Gold · vistas</text>
-
-  <!-- CRM group -->
-  <text x="30" y="128" font-size="14" font-weight="bold" fill="#1e3a8a">CRM · 01_datasets/source_crm</text>
-  <g font-size="14" fill="#111827">
-    <rect x="20" y="138" width="250" height="40" rx="6" fill="#dbeafe" stroke="#1e3a8a"/><text x="35" y="163">cust_info.csv</text>
-    <rect x="20" y="188" width="250" height="40" rx="6" fill="#dbeafe" stroke="#1e3a8a"/><text x="35" y="213">prd_info.csv</text>
-    <rect x="20" y="238" width="250" height="40" rx="6" fill="#dbeafe" stroke="#1e3a8a"/><text x="35" y="263">sales_details.csv</text>
-  </g>
-  <text x="30" y="308" font-size="14" font-weight="bold" fill="#a16207">ERP · 01_datasets/source_erp</text>
-  <g font-size="14" fill="#111827">
-    <rect x="20" y="318" width="250" height="40" rx="6" fill="#fef3c7" stroke="#a16207"/><text x="35" y="343">CUST_AZ12.csv</text>
-    <rect x="20" y="368" width="250" height="40" rx="6" fill="#fef3c7" stroke="#a16207"/><text x="35" y="393">LOC_A101.csv</text>
-    <rect x="20" y="418" width="250" height="40" rx="6" fill="#fef3c7" stroke="#a16207"/><text x="35" y="443">PX_CAT_G1V2.csv</text>
-  </g>
-
-  <!-- Bronze tables -->
-  <g font-size="14" fill="#111827">
-    <rect x="330" y="138" width="290" height="40" rx="6" fill="#ffedd5" stroke="#c2410c"/><text x="345" y="163">bronze.crm_cust_info</text>
-    <rect x="330" y="188" width="290" height="40" rx="6" fill="#ffedd5" stroke="#c2410c"/><text x="345" y="213">bronze.crm_prd_info</text>
-    <rect x="330" y="238" width="290" height="40" rx="6" fill="#ffedd5" stroke="#c2410c"/><text x="345" y="263">bronze.crm_sales_details</text>
-    <rect x="330" y="318" width="290" height="40" rx="6" fill="#ffedd5" stroke="#c2410c"/><text x="345" y="343">bronze.erp_cust_az12</text>
-    <rect x="330" y="368" width="290" height="40" rx="6" fill="#ffedd5" stroke="#c2410c"/><text x="345" y="393">bronze.erp_loc_a101</text>
-    <rect x="330" y="418" width="290" height="40" rx="6" fill="#ffedd5" stroke="#c2410c"/><text x="345" y="443">bronze.erp_px_cat_g1v2</text>
-  </g>
-
-  <!-- arrows CSV -> Bronze -->
-  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#374151"/></marker></defs>
-  <g stroke="#374151" stroke-width="2" marker-end="url(#a)">
-    <line x1="270" y1="158" x2="328" y2="158"/><line x1="270" y1="208" x2="328" y2="208"/><line x1="270" y1="258" x2="328" y2="258"/>
-    <line x1="270" y1="338" x2="328" y2="338"/><line x1="270" y1="388" x2="328" y2="388"/><line x1="270" y1="438" x2="328" y2="438"/>
-    <line x1="620" y1="298" x2="678" y2="298"/><line x1="870" y1="298" x2="898" y2="298"/>
-  </g>
-
-  <!-- Silver / Gold placeholders -->
-  <rect x="680" y="138" width="190" height="320" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-dasharray="6 4"/>
-  <text x="775" y="290" text-anchor="middle" font-size="15" fill="#374151">Siguiente etapa</text>
-  <text x="775" y="312" text-anchor="middle" font-size="13" fill="#6b7280">limpieza y estandarización</text>
-  <rect x="900" y="138" width="180" height="320" rx="8" fill="#fefce8" stroke="#ca8a04" stroke-dasharray="6 4"/>
-  <text x="990" y="290" text-anchor="middle" font-size="15" fill="#374151">Siguiente etapa</text>
-  <text x="990" y="312" text-anchor="middle" font-size="13" fill="#6b7280">dim_ / fact_ (estrella)</text>
-
-  <!-- footer: load method -->
-  <text x="475" y="488" text-anchor="middle" font-size="13" fill="#374151">CALL bronze.load_bronze()</text>
-  <text x="475" y="506" text-anchor="middle" font-size="12" fill="#6b7280">COPY · carga completa (Truncate &amp; Insert) · sin transformaciones</text>
-  <text x="775" y="488" text-anchor="middle" font-size="13" fill="#6b7280">silver.load_silver()</text>
-  <text x="990" y="488" text-anchor="middle" font-size="13" fill="#6b7280">CREATE VIEW gold.*</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1140" height="540" viewBox="0 0 1140 540" font-family="Segoe UI, Arial, sans-serif">
+<rect width="1140" height="540" fill="#ffffff"/>
+<text x="570.0" y="34" text-anchor="middle" font-size="22" font-weight="bold" fill="#1f2937">Flujo de datos · sql-data-warehouse-project (PostgreSQL)</text>
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#374151"/></marker></defs>
+<rect x="20" y="56" width="220" height="44" rx="8" fill="#1e3a8a"/><text x="130.0" y="84" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Fuentes (CSV)</text>
+<rect x="290" y="56" width="240" height="44" rx="8" fill="#c2410c"/><text x="410.0" y="84" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Capa Bronze · tablas</text>
+<rect x="580" y="56" width="240" height="44" rx="8" fill="#6b7280"/><text x="700.0" y="84" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Capa Silver · tablas</text>
+<rect x="870" y="56" width="250" height="44" rx="8" fill="#ca8a04"/><text x="995.0" y="84" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Capa Gold · vistas</text>
+<text x="28" y="128" font-size="13" font-weight="bold" fill="#1e3a8a">CRM · source_crm</text>
+<text x="28" y="308" font-size="13" font-weight="bold" fill="#a16207">ERP · source_erp</text>
+<rect x="20" y="138" width="220" height="40" rx="6" fill="#dbeafe" stroke="#1e3a8a"/><text x="34" y="163" font-size="14" fill="#111827">cust_info.csv</text>
+<rect x="290" y="138" width="240" height="40" rx="6" fill="#ffedd5" stroke="#c2410c"/><text x="302" y="163" font-size="14" fill="#111827">bronze.crm_cust_info</text>
+<rect x="580" y="138" width="240" height="40" rx="6" fill="#e5e7eb" stroke="#6b7280"/><text x="592" y="163" font-size="14" fill="#111827">silver.crm_cust_info</text>
+<line x1="240" y1="158" x2="288" y2="158" stroke="#374151" stroke-width="2" marker-end="url(#a)"/>
+<line x1="530" y1="158" x2="578" y2="158" stroke="#374151" stroke-width="2" marker-end="url(#a)"/>
+<rect x="20" y="188" width="220" height="40" rx="6" fill="#dbeafe" stroke="#1e3a8a"/><text x="34" y="213" font-size="14" fill="#111827">prd_info.csv</text>
+<rect x="290" y="188" width="240" height="40" rx="6" fill="#ffedd5" stroke="#c2410c"/><text x="302" y="213" font-size="14" fill="#111827">bronze.crm_prd_info</text>
+<rect x="580" y="188" width="240" height="40" rx="6" fill="#e5e7eb" stroke="#6b7280"/><text x="592" y="213" font-size="14" fill="#111827">silver.crm_prd_info</text>
+<line x1="240" y1="208" x2="288" y2="208" stroke="#374151" stroke-width="2" marker-end="url(#a)"/>
+<line x1="530" y1="208" x2="578" y2="208" stroke="#374151" stroke-width="2" marker-end="url(#a)"/>
+<rect x="20" y="238" width="220" height="40" rx="6" fill="#dbeafe" stroke="#1e3a8a"/><text x="34" y="263" font-size="14" fill="#111827">sales_details.csv</text>
+<rect x="290" y="238" width="240" height="40" rx="6" fill="#ffedd5" stroke="#c2410c"/><text x="302" y="263" font-size="14" fill="#111827">bronze.crm_sales_details</text>
+<rect x="580" y="238" width="240" height="40" rx="6" fill="#e5e7eb" stroke="#6b7280"/><text x="592" y="263" font-size="14" fill="#111827">silver.crm_sales_details</text>
+<line x1="240" y1="258" x2="288" y2="258" stroke="#374151" stroke-width="2" marker-end="url(#a)"/>
+<line x1="530" y1="258" x2="578" y2="258" stroke="#374151" stroke-width="2" marker-end="url(#a)"/>
+<rect x="20" y="318" width="220" height="40" rx="6" fill="#fef3c7" stroke="#a16207"/><text x="34" y="343" font-size="14" fill="#111827">CUST_AZ12.csv</text>
+<rect x="290" y="318" width="240" height="40" rx="6" fill="#ffedd5" stroke="#c2410c"/><text x="302" y="343" font-size="14" fill="#111827">bronze.erp_cust_az12</text>
+<rect x="580" y="318" width="240" height="40" rx="6" fill="#e5e7eb" stroke="#6b7280"/><text x="592" y="343" font-size="14" fill="#111827">silver.erp_cust_az12</text>
+<line x1="240" y1="338" x2="288" y2="338" stroke="#374151" stroke-width="2" marker-end="url(#a)"/>
+<line x1="530" y1="338" x2="578" y2="338" stroke="#374151" stroke-width="2" marker-end="url(#a)"/>
+<rect x="20" y="368" width="220" height="40" rx="6" fill="#fef3c7" stroke="#a16207"/><text x="34" y="393" font-size="14" fill="#111827">LOC_A101.csv</text>
+<rect x="290" y="368" width="240" height="40" rx="6" fill="#ffedd5" stroke="#c2410c"/><text x="302" y="393" font-size="14" fill="#111827">bronze.erp_loc_a101</text>
+<rect x="580" y="368" width="240" height="40" rx="6" fill="#e5e7eb" stroke="#6b7280"/><text x="592" y="393" font-size="14" fill="#111827">silver.erp_loc_a101</text>
+<line x1="240" y1="388" x2="288" y2="388" stroke="#374151" stroke-width="2" marker-end="url(#a)"/>
+<line x1="530" y1="388" x2="578" y2="388" stroke="#374151" stroke-width="2" marker-end="url(#a)"/>
+<rect x="20" y="418" width="220" height="40" rx="6" fill="#fef3c7" stroke="#a16207"/><text x="34" y="443" font-size="14" fill="#111827">PX_CAT_G1V2.csv</text>
+<rect x="290" y="418" width="240" height="40" rx="6" fill="#ffedd5" stroke="#c2410c"/><text x="302" y="443" font-size="14" fill="#111827">bronze.erp_px_cat_g1v2</text>
+<rect x="580" y="418" width="240" height="40" rx="6" fill="#e5e7eb" stroke="#6b7280"/><text x="592" y="443" font-size="14" fill="#111827">silver.erp_px_cat_g1v2</text>
+<line x1="240" y1="438" x2="288" y2="438" stroke="#374151" stroke-width="2" marker-end="url(#a)"/>
+<line x1="530" y1="438" x2="578" y2="438" stroke="#374151" stroke-width="2" marker-end="url(#a)"/>
+<line x1="820" y1="298" x2="868" y2="298" stroke="#374151" stroke-width="2" marker-end="url(#a)"/>
+<rect x="870" y="138" width="250" height="320" rx="8" fill="#fefce8" stroke="#ca8a04" stroke-dasharray="6 4"/>
+<text x="995" y="280" text-anchor="middle" font-size="15" fill="#374151">Siguiente etapa</text>
+<text x="995" y="302" text-anchor="middle" font-size="13" fill="#6b7280">dim_customers, dim_products,</text>
+<text x="995" y="320" text-anchor="middle" font-size="13" fill="#6b7280">fact_sales (esquema estrella)</text>
+<text x="410" y="488" text-anchor="middle" font-size="13" fill="#374151">CALL bronze.load_bronze()</text><text x="410" y="506" text-anchor="middle" font-size="12" fill="#6b7280">COPY · Truncate &amp; Insert</text><text x="410" y="522" text-anchor="middle" font-size="12" fill="#6b7280">sin transformaciones</text>
+<text x="700" y="488" text-anchor="middle" font-size="13" fill="#374151">CALL silver.load_silver()</text><text x="700" y="506" text-anchor="middle" font-size="12" fill="#6b7280">INSERT ... SELECT · Truncate &amp; Insert</text><text x="700" y="522" text-anchor="middle" font-size="12" fill="#6b7280">limpieza y estandarización</text>
+<text x="995" y="488" text-anchor="middle" font-size="13" fill="#374151">CREATE VIEW gold.*</text><text x="995" y="506" text-anchor="middle" font-size="12" fill="#6b7280">no se carga</text><text x="995" y="522" text-anchor="middle" font-size="12" fill="#6b7280">integración y reglas de negocio</text>
 </svg>
