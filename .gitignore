@@ -1,0 +1,15 @@
+# Archivos del sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editores
+.vscode/
+*.swp
+*.bak
+
+# Respaldos o exportaciones locales de la base
+*.backup
+*.dump
+
+# Los CSV de 01_datasets SÍ se versionan: los scripts los necesitan.
